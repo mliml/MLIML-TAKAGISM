@@ -3,7 +3,7 @@ It's my first python game, about escaping from a room.
 
 ---
 
-##V1.0 版本说明：
+### V1.0 版本说明：
 
 设计了最初的游戏结构
 
@@ -11,7 +11,7 @@ It's my first python game, about escaping from a room.
 
 编写了游戏的基本功能函数
 
-###状态机：
+#### 状态机：
 
 000——游戏开始
 
@@ -21,7 +21,7 @@ It's my first python game, about escaping from a room.
 
 100——开门状态
 
-###功能函数：
+#### 功能函数：
 
 player_input():获得玩家输入
 
