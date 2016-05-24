@@ -12,46 +12,51 @@ def player_input(info):
     return player_choice
 
 # update_bag() 更新玩家背包物品
-def update_bag(equip_name, equip_count):
+def update_bag(name, value):
     bag = OPdata.get_bag_data()
-    if bag[equip_name] != 0:
-        bag[equip_name] = bag[equip_name] + equip_count
+    if bag[name] != 0:
+        bag[name] = bag[name] + value
     else:
-        bag[equip_name] = equip_count
+        bag[name] = value
     OPdata.update_bag_data(bag)
-    print "你得到了%s，目前数量为%d" % (equip_name, bag[equip_name])
+    print "你得到了%s，目前数量为%d" % (name, bag[name])
 
-    return bag[equip_name]
+    return bag[name]
 
 # update_room() 更新屋内物品
-def update_room(equip_name, equip_count):
+def update_room(name, value):
     room = OPdata.get_room_data()
-    room[equip_name] = room[equip_name] - equip_count
+    room[name] = room[name] - value
     OPdata.update_room_data(room)
 
-    return room[equip_name]
+    return room[name]
 
-# op_global_data() 进行全局数据的读取和修改,目前可以读取用户名，读取和修改背包物品数量
-# 1-player_name 2-bag 3-room
-def op_global_data(typeNo,m_data,c_data):
-    if typeNo == 1:
-        if c_data == None:
-            return OPdata.get_playerName_data()
-        else:
-            OPdata.update_playerName_data(c_data)
-            return c_data
-    elif typeNo == 2:
-        if c_data == None:
-            bag = OPdata.get_bag_data()
-            return bag[m_data]
-        else:
-            return update_bag(m_data,c_data)
-    elif typeNo == 3:
-        if c_data == None:
-            room = OPdata.get_room_data()
-            return room[m_data]
-        else:
-            return update_room(m_data,c_data)
+# op_bag type1:读取 type2:修改
+def op_bag(type, name, value):
+    if type == 1:
+        bag = OPdata.get_bag_data()
+        return bag[name]
+    elif type == 2:
+        return update_bag(name,value)
     else:
-        print "get_global_data() typeNO is wrong."
+        print "Worng!"
         exit(0)
+
+# op_room type1:读取 type2:修改
+def op_room(type, name, value):
+    if type == 1:
+        room = OPdata.get_room_data()
+        return room[name]
+    elif type == 2:
+        return update_room(name,value)
+    else:
+        print "Worng!"
+        exit(0)
+
+# op_player none-读取 其他-更新
+def op_player(name):
+    if name == None:
+        return OPdata.get_playerName_data()
+    else:
+        OPdata.update_playerName_data(name)
+        return name

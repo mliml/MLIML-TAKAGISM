@@ -17,7 +17,7 @@ def st000():
     print "不要关心你是怎么进来的"
     print "关心，"
     print "你要怎么出去"
-    name = function.op_global_data(1,0,function.player_input("首先，请告诉我你的名字"))
+    name = function.op_player(function.player_input("首先，请告诉我你的名字"))
     print "你好，%s，祝你玩得尽兴。" % name
 
     OPdata.update_state_data("001")
@@ -40,12 +40,12 @@ def st001():
 def st002():
     print "你走到了桌子前，开始仔细地检查桌子的各个角落"
     print "..."
-    if function.op_global_data(3,"金钥匙",None) == 1:
+    if function.op_room(1,"金钥匙",None) >= 1:
         choice = function.player_input("你突然发现一个桌子腿下面压着一把钥匙！\n你想要做什么：\n1、拿起钥匙\n2、什么也不做")
         if choice == "1":
             print "你捡起了钥匙\n钥匙+1"
-            function.op_global_data(2,"金钥匙",1)
-            function.op_global_data(3,"金钥匙",1)
+            function.op_bag(2,"金钥匙",1)
+            function.op_room(2,"金钥匙",1)
         else:
             print "你在桌子前什么也没有发现，或许你应该再到别处看看..."
     else:
@@ -58,9 +58,9 @@ def st100():
     choice = function.player_input("你想要做什么：\n1.试着把门打开\n2.什么也不做")
 
     if choice == "1":
-        if function.op_global_data(2,"金钥匙",None) >= 1:
+        if function.op_bag(1,"金钥匙",None) >= 1:
             print "你打开了大门"
-            print "恭喜你重获自由，再见，%s" % function.op_global_data(1,None,None)
+            print "恭喜你重获自由，再见，%s" % function.op_player(None)
             print "游戏结束..."
             OPdata.update_state_data("999")
         else:
@@ -94,6 +94,7 @@ def game():
         elif OPdata.get_state_data() == "999":
             time.sleep(1)
             st999()
+            OPdata.update_state_data("000")
             break
         else:
             print "state WRONG!"

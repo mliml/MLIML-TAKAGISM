@@ -9,6 +9,8 @@ It's my first python game, about escaping from a room.
 
 STATE 变量交由 OPdata.py 来操作
 
+重构 function.py 里面的函数
+
 ---
 
 ### V3.0 版本说明
