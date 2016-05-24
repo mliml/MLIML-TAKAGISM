@@ -3,6 +3,14 @@ It's my first python game, about escaping from a room.
 
 ---
 
+### V3.2 版本说明
+
+重要！加入系统菜单 可以随时退出游戏，查看背包，      保存游戏（暂时还未实现）
+
+优化接收用户输入函数，做到格式化识别
+
+---
+
 ### V3.1 版本说明
 
 将游戏运行与状态机分离，独立出 game.py 运行游戏
@@ -10,6 +18,8 @@ It's my first python game, about escaping from a room.
 STATE 变量交由 OPdata.py 来操作
 
 重构 function.py 里面的函数
+
+重要！加入系统菜单 可以随时退出游戏，查看背包，      保存游戏（暂时还未实现）
 
 ---
 
