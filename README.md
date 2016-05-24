@@ -3,6 +3,20 @@ It's my first python game, about escaping from a room.
 
 ---
 
+### V3.1 版本说明
+
+将游戏运行与状态机分离，独立出 game.py 运行游戏
+
+STATE 变量交由 OPdata.py 来操作
+
+---
+
+### V3.0 版本说明
+
+将全局数据分离，所有数据操作由单独的文件 OPdata.py 来操作，读取，传递
+
+---
+
 ### V2.0 版本说明
 
 将状态机与功能函数分文件处理
