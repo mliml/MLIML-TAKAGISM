@@ -28,7 +28,9 @@ def sys_menu():
         elif p_choice == "S":
             q_choice = player_input("你是否要保存当前记录？Y-yes，N-no")
             if q_choice == "Y":
+                filename = player_input("请输入文件名")
                 print "正在保存中..."
+                OPdata.save(filename)
                 time.sleep(2)
                 print "记录已保存。"
                 input_st = True

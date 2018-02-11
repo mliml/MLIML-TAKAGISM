@@ -44,14 +44,14 @@ def st001():
 def st002():
     print "你走到了桌子前，开始仔细地检查桌子的各个角落"
     print "..."
-    if function.op_room(1,"金钥匙",None) >= 1:
+    if function.op_room(1,"g-key",None) >= 1:
         bg = "你突然发现一个桌子腿下面压着一把钥匙！"
         option = {"1":"拿起钥匙", "2":"什么也不做"}
         choice = function.input_handle(bg,option,2)
         if choice == "1":
             print "你捡起了钥匙\n钥匙+1"
-            function.op_bag(2,"金钥匙",1)
-            function.op_room(2,"金钥匙",1)
+            function.op_bag(2,"g-key",1)
+            function.op_room(2,"g-key",1)
         else:
             print "或许你想到再到别处看看..."
     else:
@@ -65,7 +65,7 @@ def st100():
     choice = function.input_handle(bg,option,2)
 
     if choice == "1":
-        if function.op_bag(1,"金钥匙",None) >= 1:
+        if function.op_bag(1,"g-key",None) >= 1:
             print "你打开了大门"
             print "恭喜你重获自由，再见，%s" % function.op_player(None)
             print "游戏结束..."

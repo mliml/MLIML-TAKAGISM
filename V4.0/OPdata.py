@@ -1,7 +1,9 @@
 # _*_ coding: utf-8 _*_
+import linecache
+import urllib
 
-BAG = {'金钥匙':0}
-ROOM = {'金钥匙':1}
+BAG = {'g-key':0}
+ROOM = {'g-key':1}
 PLAYER_NAME = "Default"
 STATE = "000"
 SAV = None
@@ -53,3 +55,26 @@ def save(save_name):
     f.write(str(STATE)+'\n')
     f.write(str(BAG)+'\n')
     f.write(str(ROOM))
+
+def load(load_name):
+    VAR = linecache.getline('sav/'+ load_name, 1)
+    VAR = VAR.strip('\n')
+    update_playerName_data(VAR)
+    
+    VAR = linecache.getline('sav/'+ load_name, 2)
+    VAR = VAR.strip('\n')
+    update_state_data(VAR)
+
+    VAR = linecache.getline('sav/'+ load_name, 3)
+    VAR = VAR.strip('\n')
+    global BAG
+    print (BAG)
+    BAG = eval(VAR)
+    print (BAG)
+
+    VAR = linecache.getline('sav/'+ load_name, 4)
+    VAR = VAR.strip('\n')
+    global ROOM
+    print (ROOM)
+    ROOM = eval(VAR)
+    print (ROOM)
